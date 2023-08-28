@@ -1,11 +1,22 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['user_id'])) {
+    header('Location: ../views/login.php');
+}
+
+$user_id = $_SESSION['user_id'];
+$user_name = $_SESSION['user_name'];
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="./imgs/favicon.ico">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="../image/x-icon" href="../imgs/favicon.ico">
+    <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>     
@@ -14,22 +25,29 @@
 </head>
 <body>
     <header>
+    
+    
         <div class=" text-center vw">
             <div class="row align-items-center">
               <div class="col titulo_SS">
-                <h4><a href="index.html">Compu-Tec</a></h4>
+                <h4><a href="../views/inicio.php">Compu-Tec</a></h4>
               </div>
               <div class="col ">
-                <a href="index.html"><img src="imgs/favicon.ico" alt="logo_img" style="width: 100px;"></a>
+                <a href="../views/inicio.php"><img src="../imgs/favicon.ico" alt="logo_img" style="width: 100px;"></a>
               </div>
 
               <div class="col contacto_header">
 
-                <!--
-                  JOE, DENTRO DE ESTE CODIGO EN LA SECCION HREF AGREGAS LA RUTA DE TU LOGIN
-                -->
-                <a class="button-49" href="views/login.php"><i class="fa fa-user-circle" aria-hidden="true" style="color: white;"></i>
-                  Ingresar</a>
+                <form method="post" action="../controllers/logout.php">
+                  <button type="submit" name="logout">Cerrar sesión</button>
+                </form>
+                <a class="button-49" href="../views/login.php">
+                    <i class="fa fa-user-circle" aria-hidden="true" style="color: white;">
+                    </i>
+                    <?php echo $user_name; ?>
+                    <br>
+                
+                </a>
 
 
               </div>
@@ -81,12 +99,12 @@
             </p>
           </div>
           <div class="service_content_img">
-            <img src="imgs/seleccion_cuidadosa.jpg" alt="security_img" loading="lazy">
+            <img src="../imgs/seleccion_cuidadosa.jpg" alt="security_img" loading="lazy">
           </div>
         </div>
         <div class="service_content">
           <div class="service_content_img">
-            <img src="imgs/asesoramiento_personalizado.png" alt="security_img" loading="lazy">
+            <img src="../imgs/asesoramiento_personalizado.png" alt="security_img" loading="lazy">
           </div>
           <div class="service_content_description">
             <h3>Asesoramiento Personalizado</h3>
@@ -105,12 +123,12 @@
             </p>
           </div>
           <div class="service_content_img">
-            <img src="imgs/servicio_cliente.jpg" alt="security_img" loading="lazy">
+            <img src="../imgs/servicio_cliente.jpg" alt="security_img" loading="lazy">
           </div>
         </div>
         <div class="service_content">
           <div class="service_content_img">
-            <img src="imgs/innovacion_constante.png" alt="security_img" loading="lazy">
+            <img src="../imgs/innovacion_constante.png" alt="security_img" loading="lazy">
           </div>
           <div class="service_content_description">
             <h3>Innovación Constante</h3>
@@ -168,7 +186,7 @@
       <h4 class="centered-h4" id="productos">Nuestros Productos</h4>
 <div class="wrapper">
 	<div class="card">
-		<div class="poster"><img src="./imgs/pc.jpg" alt="Location Unknown"></div>
+		<div class="poster"><img src="../imgs/pc.jpg" alt="Location Unknown"></div>
 		<div class="details">
 			<h1>Computadoras de escritorio</h1>
 			<p class="desc">
@@ -177,15 +195,15 @@
 			<div class="cast">
 				<h3>Marcas</h3>
 				<ul>
-					<li><img src="./imgs/amd.jpg" alt="AMD"></li>
-					<li><img src="./imgs/intel.jpg" alt="Intel"></li>
+					<li><img src="../imgs/amd.jpg" alt="AMD"></li>
+					<li><img src="../imgs/intel.jpg" alt="Intel"></li>
 				
 				</ul>
 			</div>
 		</div>
 	</div>
 	<div class="card">
-		<div class="poster"><img src="./imgs/perifericos.jpg" alt="Location Unknown"></div>
+		<div class="poster"><img src="../imgs/perifericos.jpg" alt="Location Unknown"></div>
 		<div class="details">
 			<h1>Perifericos</h1>
 			<p class="desc">
@@ -194,15 +212,15 @@
 			<div class="cast">
 				<h3>Marcas</h3>
 				<ul>
-					<li><img src="./imgs/logitech.jpg"></li>
-					<li><img src="./imgs/raze.jpg"></li>
-          <li><img src="./imgs/corsair.jpg"></li>
+					<li><img src="../imgs/logitech.jpg"></li>
+					<li><img src="../imgs/raze.jpg"></li>
+          <li><img src="../imgs/corsair.jpg"></li>
 				</ul>
 			</div>
 		</div>
 	</div>
 	<div class="card">
-		<div class="poster"><img src="./imgs/laptop.jpg" alt="Location Unknown"></div>
+		<div class="poster"><img src="../imgs/laptop.jpg" alt="Location Unknown"></div>
 		<div class="details">
 			<h1>Laptops</h1>
 			<p class="desc">
@@ -211,9 +229,9 @@
 			<div class="cast">
 				<h3>Marcas</h3>
 				<ul>
-					<li><img src="./imgs/asus.jpg"></li>
-					<li><img src="./imgs/hp.jpg"></li>
-          <li><img src="./imgs/lenovo.jpg"></li>
+					<li><img src="../imgs/asus.jpg"></li>
+					<li><img src="../imgs/hp.jpg"></li>
+          <li><img src="../imgs/lenovo.jpg"></li>
 				</ul>
 			</div>
 		</div>
@@ -262,8 +280,7 @@
       <section class="form_contact_us" >
         <button class="close_form_contact_us"><i class="fa-solid fa-circle-xmark"></i></button>
       <h4>Contáctanos</h4>
-      <form action="https://formsubmit.co/teamperuPH@gmail.com" method="POST" class="form_cu">
-    
+        <form action="" class="form_cu">
           <div class="container_inputs_names">
             <div class="container_names">
               <label for="name">Nombre</label>
@@ -296,19 +313,14 @@
             <input type="checkbox" name="checkbox" id="checkbox">
             <label for="checkbox">Acepto los <a href="#">términos y condiciones</a></label>
           </div>
-
-          <!-- PADILLA ESTE ES EL BOTON QUE ENVIA EL FORMULARIO -->
           <div class="container_button_send">
             <button type="submit" class="btn btn-primary">Enviar</button>
           </div>
-          <input type="hidden" name="_next" value="https://dlauriano.com.pe/">
-          <input type="hidden" name="_captcha" value="false">
-        
-      </form> 
+        </form>
       </section>
     </div>
     <!-- -----------------------Form_Contact_Us------------------------------->
-    <script src="./js/interaccion.js"></script>
+    <script src="../js/interaccion.js"></script>
 
 
     <script>

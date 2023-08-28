@@ -9,7 +9,7 @@ const col = document.querySelectorAll(".col");
 const li = document.querySelectorAll(".nav_bar li");
 const img = document.querySelectorAll(".img");
 const containerShadow_form = document.querySelector(".container_background_shadow");
-const btnOpenFormHeader = document.querySelector(".open_contact_form_header");
+// const btnOpenFormHeader = document.querySelector(".open_contact_form_header");
 const btnOpenFormDown = document.querySelector(".open_contact_form_down");
 const btncloseForm = document.querySelector(".close_form_contact_us");
 
@@ -38,10 +38,10 @@ window.addEventListener("scroll", () => {
     }
 });
 
-//Open the form contact us by button header
-btnOpenFormHeader.addEventListener("click", () => {
-    containerShadow_form.style.display = "flex";
-});
+// //Open the form contact us by button header
+// btnOpenFormHeader.addEventListener("click", () => {
+//     containerShadow_form.style.display = "flex";
+// });
 //Open the form contact us by button down
 btnOpenFormDown.addEventListener("click", () => {
     containerShadow_form.style.display = "flex";
